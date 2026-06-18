@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HAVE — Discover the world's most famous gaming and productivity mice. Compare specs, read pros & cons, and find your perfect mouse.">
+    <title>HAVE — Discover the Best Mice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient Animated Background -->
+    <div class="ambient-gradient"></div>
+
+    <!-- Bot Challenge Screen (WAF Human Verification Simulator) -->
+    <div id="waf-challenge-screen" class="waf-challenge-overlay">
+        <div class="waf-challenge-card">
+            <div class="waf-shield-container">
+                <div class="waf-shield-outer"></div>
+                <div class="waf-shield-inner">🖱️</div>
+            </div>
+            <h2>Verifying connection security...</h2>
+            <p class="waf-status">Checking if you are human to protect HAVE APIs. Please wait...</p>
+            <div class="waf-progress-bar">
+                <div class="waf-progress-fill"></div>
+            </div>
+            <div class="waf-footer-text">
+                Protected by HAVE WAF Shield v2.4 • Client IP: <span id="client-ip-placeholder">192.168.1.105</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="logo-trigger">
+                <span class="logo-icon">🖱️</span>
+                <span class="logo-text">H<span class="accent">A</span>VE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#mice" class="nav-link">Mice</a></li>
+                <li><a href="#compare" class="nav-link">Compare</a></li>
+                <li><a href="#host" class="nav-link">Host Info</a></li>
+                <li id="nav-admin-link" style="display: none;"><a href="#host-admin" class="nav-link">Host Dashboard</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260503_101827_abebfeec-f243-466b-b494-7f6814c0fbbf.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🔥 The Ultimate Mouse Encyclopedia</div>
+            <h1 class="hero-title">
+                Find Your <span class="gradient-text">Perfect Mouse</span>
+            </h1>
+            <p class="hero-subtitle">
+                Explore detailed specs, honest pros & cons, and expert insights on the world's most iconic mice — from competitive gaming to creative productivity.
+            </p>
+            <div class="hero-actions">
+                <a href="#mice" class="btn btn-primary">
+                    <span>Explore Mice</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#compare" class="btn btn-secondary">Compare Models</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="8">0</span>
+                    <span class="stat-label">Mice Reviewed</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Specs Compared</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Honest Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section id="mice" class="mice-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Collection</span>
+                <h2 class="section-title">Famous Mice</h2>
+                <p class="section-desc">Hand-picked selection of the most iconic mice that shaped the industry</p>
+            </div>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="gaming">Gaming</button>
+                <button class="filter-btn" data-filter="productivity">Productivity</button>
+                <button class="filter-btn" data-filter="lightweight">Lightweight</button>
+            </div>
+            <div id="mice-grid" class="mice-grid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Section -->
+    <section id="compare" class="compare-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Side by Side</span>
+                <h2 class="section-title">Quick Compare</h2>
+                <p class="section-desc">Select two mice to compare their specs head-to-head</p>
+            </div>
+            <div class="compare-selectors">
+                <div class="compare-select-wrap">
+                    <label for="compare-a">Mouse A</label>
+                    <select id="compare-a" class="compare-select">
+                        <option value="">Select a mouse...</option>
+                    </select>
+                </div>
+                <div class="compare-vs">VS</div>
+                <div class="compare-select-wrap">
+                    <label for="compare-b">Mouse B</label>
+                    <select id="compare-b" class="compare-select">
+                        <option value="">Select a mouse...</option>
+                    </select>
+                </div>
+            </div>
+            <div id="compare-table" class="compare-table" style="display:none;">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ask to Host Section -->
+    <section id="host" class="host-section reveal">
+        <div class="container">
+            <div class="host-card">
+                <div class="host-content">
+                    <div class="section-header" style="text-align:left;">
+                        <span class="section-tag">Collaborate</span>
+                        <h2 class="section-title">Ask to Host Your Mouse</h2>
+                        <p class="section-desc">Are you a manufacturer or reviewer? Submit your mouse to be featured on HAVE. We'll review your submission and add it to our curated collection.</p>
+                    </div>
+                    <form id="host-form" class="host-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="host-name">Your Name</label>
+                                <input type="text" id="host-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="host-email">Email Address</label>
+                                <input type="email" id="host-email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="host-mouse">Mouse Name</label>
+                                <input type="text" id="host-mouse" placeholder="e.g. Razer Viper V3" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="host-brand">Brand</label>
+                                <input type="text" id="host-brand" placeholder="e.g. Razer" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <label for="host-message">Tell us about this mouse</label>
+                                <span class="char-counter" id="host-msg-counter">0 / 300</span>
+                            </div>
+                            <textarea id="host-message" rows="4" maxlength="300" placeholder="Key specs, what makes it unique, target audience..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="host-submit">
+                            <span>Submit for Review</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="host-visual">
+                    <div class="host-feature">
+                        <div class="host-feature-icon">📋</div>
+                        <h4>Submit Details</h4>
+                        <p>Fill in your mouse specs and key features</p>
+                    </div>
+                    <div class="host-feature">
+                        <div class="host-feature-icon">🔍</div>
+                        <h4>We Review</h4>
+                        <p>Our team evaluates your submission</p>
+                    </div>
+                    <div class="host-feature">
+                        <div class="host-feature-icon">🚀</div>
+                        <h4>Go Live</h4>
+                        <p>Your mouse gets featured on HAVE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section reveal">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Support</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-desc">Everything you need to know about choosing the right mouse</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What DPI should I use for gaming?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most competitive gamers use 400–800 DPI with a low in-game sensitivity. Higher DPI (1600+) can be useful for productivity or high-resolution displays. The key is finding a combination of DPI and sensitivity that gives you consistent aim.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Wireless vs Wired — does it matter?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Modern wireless mice (like the Logitech Lightspeed or Razer HyperSpeed) have virtually zero latency difference compared to wired. The convenience of wireless is now achievable without any performance compromise.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How important is mouse weight?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Weight is a personal preference. Lighter mice (under 60g) allow faster flick movements and reduce fatigue during long sessions. Heavier mice offer more control and stability. Try both to see what feels natural to you.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What grip style suits me best?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p><strong>Palm grip:</strong> Best for ergonomic mice (DeathAdder, EC2). <strong>Claw grip:</strong> Works well with medium-sized mice. <strong>Fingertip grip:</strong> Ideal for small, lightweight mice (Viper Mini, UltralightX). Match your grip to the mouse shape for maximum comfort.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I clean my mouse sensor?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Use a can of compressed air to blow dust from the sensor lens. For stubborn debris, gently use a cotton swab with isopropyl alcohol. Clean your mousepad regularly too — a dirty pad affects tracking more than a dirty sensor.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I use a gaming mouse for work?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! Many gaming mice have excellent ergonomics and precise sensors that benefit productivity. However, for extended office use, consider mice with ergonomic shapes (like the MX Master 3S) that offer features like horizontal scrolling and multi-device connectivity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Host Admin Panel -->
+    <section id="host-admin" class="host-admin-section reveal" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Host Control Panel</span>
+                <h2 class="section-title">Database Management</h2>
+                <p class="section-desc">Add new mice directly to the website, edit specifications, or remove them. All data persists locally in real-time.</p>
+            </div>
+            
+            <!-- Admin Grid -->
+            <div id="admin-dashboard-grid" class="admin-grid">
+                <!-- Left column: Add Mouse Form -->
+                <div class="admin-card add-mouse-card">
+                    <h3>➕ Add New Mouse</h3>
+                    <form id="admin-add-form" class="admin-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-name">Mouse Name *</label>
+                                <input type="text" id="admin-name" placeholder="e.g. Razer Viper V3 Pro" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-brand">Brand *</label>
+                                <input type="text" id="admin-brand" placeholder="e.g. Razer" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-category">Category *</label>
+                                <select id="admin-category" class="admin-select" required>
+                                    <option value="gaming">Gaming</option>
+                                    <option value="productivity">Productivity</option>
+                                    <option value="lightweight">Lightweight</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-price">Price *</label>
+                                <input type="text" id="admin-price" placeholder="e.g. $159" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-weight">Weight *</label>
+                                <input type="text" id="admin-weight" placeholder="e.g. 54g" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-sensor">Sensor *</label>
+                                <input type="text" id="admin-sensor" placeholder="e.g. Focus Pro 35K" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-dpi">Max DPI *</label>
+                                <input type="text" id="admin-dpi" placeholder="e.g. 35,000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-connection">Connection *</label>
+                                <input type="text" id="admin-connection" placeholder="e.g. Wireless" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-battery">Battery Life</label>
+                                <input type="text" id="admin-battery" placeholder="e.g. 95 hrs">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-shape">Shape</label>
+                                <input type="text" id="admin-shape" placeholder="e.g. Symmetrical">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-switches">Switches</label>
+                                <input type="text" id="admin-switches" placeholder="e.g. Gen-3 Optical">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-polling">Polling Rate</label>
+                                <input type="text" id="admin-polling" placeholder="e.g. 8,000 Hz">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-feet">Mouse Feet</label>
+                                <input type="text" id="admin-feet" placeholder="e.g. PTFE">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-rating">Rating (1-5) *</label>
+                                <input type="number" id="admin-rating" step="0.1" min="1" max="5" placeholder="4.8" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admin-image">Image URL (Optional)</label>
+                            <input type="url" id="admin-image" placeholder="https://example.com/mouse.png">
+                            <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 2px;">Leave blank for default icon</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admin-tagline">Short Tagline *</label>
+                            <input type="text" id="admin-tagline" placeholder="Brief one-line summary..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <label for="admin-description">Detailed Description *</label>
+                                <span class="char-counter" id="admin-desc-counter">0 / 250</span>
+                            </div>
+                            <textarea id="admin-description" rows="3" maxlength="250" placeholder="Explain key features, specs, ergonomics, and target audience..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admin-pros">Pros (Comma-separated) *</label>
+                            <input type="text" id="admin-pros" placeholder="Pro 1, Pro 2, Pro 3" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="admin-cons">Cons (Comma-separated) *</label>
+                            <input type="text" id="admin-cons" placeholder="Con 1, Con 2, Con 3" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <label for="admin-verdict">Verdict *</label>
+                                <span class="char-counter" id="admin-verdict-counter">0 / 150</span>
+                            </div>
+                            <textarea id="admin-verdict" rows="2" maxlength="150" placeholder="Overall review recommendation..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Add Mouse to Live Site</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right column: Database Dashboard & WAF Shield -->
+                <div class="admin-sidebar-column">
+                    <!-- Current Collection List -->
+                    <div class="admin-card manage-mice-card" style="margin-bottom: 24px;">
+                        <div class="manage-header">
+                            <h3>📋 Current Collection</h3>
+                            <div style="display: flex; gap: 8px;">
+                                <button id="admin-reset-btn" class="btn-reset-db" title="Restore default database">Reset Database</button>
+                                <button id="admin-lock-btn" class="btn-reset-db" style="color: var(--text-secondary); background: rgba(255,255,255,0.05); border-color: var(--border);" title="Lock Dashboard">Lock</button>
+                            </div>
+                        </div>
+                        <div id="admin-mice-list" class="admin-mice-list">
+                            <!-- Loaded dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- API & WAF Shield Dashboard Card -->
+                    <div class="admin-card security-shield-card">
+                        <div class="manage-header">
+                            <h3>🛡️ API & WAF Shield</h3>
+                            <span class="security-status-badge">SHIELD ACTIVE</span>
+                        </div>
+                        <div class="security-stats">
+                            <div class="sec-stat">
+                                <span class="sec-stat-num" id="sec-stat-blocked">0</span>
+                                <span class="sec-stat-label">Bots Blocked</span>
+                            </div>
+                            <div class="sec-stat">
+                                <span class="sec-stat-num" id="sec-stat-api">0</span>
+                                <span class="sec-stat-label">API Queries Shielded</span>
+                            </div>
+                        </div>
+                        <div class="security-settings">
+                            <h4>Shield Configuration</h4>
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-waf-challenge" checked>
+                                <span class="toggle-text">Enable WAF Challenge on Load</span>
+                            </label>
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-anti-scraping" checked>
+                                <span class="toggle-text">Enable Anti-Scraping Protection</span>
+                            </label>
+                            
+                            <h4 style="margin-top: 16px;">API Key Cryptography</h4>
+                            <div class="api-key-generator">
+                                <input type="text" id="api-key-input" value="hav_sk_live_58c973ea2f9b8c" readonly>
+                                <button class="btn btn-secondary" id="btn-generate-api" style="padding: 8px 12px; font-size: 0.8rem; border-radius: var(--radius-sm);">Regenerate Key</button>
+                            </div>
+                        </div>
+                        
+                        <h4 style="margin-top: 18px; margin-bottom: 8px;">Live WAF Audit Logs</h4>
+                        <div class="security-logs" id="security-logs">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section reveal">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content">
+                    <h3>Stay Updated</h3>
+                    <p>Get notified when we add new mice, publish reviews, or drop exclusive comparisons.</p>
+                </div>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <span class="logo-icon">🖱️</span>
+                        <span class="logo-text">H<span class="accent">A</span>VE</span>
+                    </a>
+                    <p>Your ultimate destination for mouse information, reviews, and comparisons. Built with ❤️ for the community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#mice">Browse Mice</a>
+                    <a href="#compare">Compare</a>
+                    <a href="#host">Host a Mouse</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <a href="#">Gaming Mice</a>
+                    <a href="#">Productivity Mice</a>
+                    <a href="#">Lightweight Mice</a>
+                    <a href="#">Ergonomic Mice</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="#faq">FAQ</a>
+                    <a href="#">Grip Guide</a>
+                    <a href="#">Sensor Database</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HAVE. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                    <a href="#" aria-label="Discord">💬</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Modal -->
+    <div id="mouse-modal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <button id="modal-close" class="modal-close" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div id="modal-body" class="modal-body">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Secret Auth Modal -->
+    <div id="auth-modal" class="modal-overlay" style="display:none;">
+        <div class="modal" style="max-width: 400px;">
+            <button id="auth-modal-close" class="modal-close" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="modal-body" style="text-align: center; padding: 40px 32px 32px;">
+                <div class="auth-icon" style="font-size: 3.5rem; margin-bottom: 16px;">🔒</div>
+                <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Host Access</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">Enter the master password to unlock the host dashboard.</p>
+                <form id="secret-auth-form" class="auth-form">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <input type="password" id="secret-auth-password" placeholder="Password" style="width: 100%; padding: 14px 18px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.95rem; text-align: center;" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Verify & Unlock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" style="display:none;"></div>
+
+    <!-- Floating AI Chat Widget -->
+    <div id="ai-chat-widget" class="ai-chat-widget">
+        <!-- Floating Chat Button -->
+        <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open AI Assistant">
+            <span class="chat-icon" id="chat-icon-open">🤖</span>
+            <span class="chat-close-icon" id="chat-icon-close" style="display:none;">✕</span>
+            <span class="chat-badge-dot" id="chat-badge"></span>
+        </button>
+        
+        <!-- Chat Window -->
+        <div id="chat-window" class="chat-window" style="display:none;">
+            <div class="chat-header">
+                <div class="chat-avatar">🤖</div>
+                <div class="chat-info">
+                    <h4>HAVE AI Assistant</h4>
+                    <span class="chat-status"><span class="status-dot"></span>Online</span>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="chat-msg bot-msg">
+                    <p>Hello! I am the HAVE AI Assistant. 🤖</p>
+                </div>
+                <div class="chat-msg bot-msg">
+                    <p>Ask me anything about our mice specs, recommendations, prices, or side-by-side comparisons!</p>
+                </div>
+            </div>
+            
+            <div class="chat-suggestions" id="chat-suggestions">
+                <button class="suggestion-tag" onclick="sendSuggestion('Recommend a gaming mouse')">Recommend a gaming mouse</button>
+                <button class="suggestion-tag" onclick="sendSuggestion('Compare Viper V3 Pro and Superlight 2')">Compare Viper vs Superlight</button>
+                <button class="suggestion-tag" onclick="sendSuggestion('Which mouse is the lightest?')">Which is lightest?</button>
+            </div>
+            
+            <form id="chat-input-form" class="chat-input-form">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chat-user-input" placeholder="Ask me about specs..." maxlength="80" required autocomplete="off">
+                    <span class="chat-char-counter" id="chat-char-counter">0 / 80</span>
+                </div>
+                <button type="submit" class="chat-send-btn" id="chat-send-btn" aria-label="Send message">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
