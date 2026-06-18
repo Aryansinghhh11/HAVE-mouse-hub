@@ -57,6 +57,7 @@ const adminAddForm = document.getElementById('admin-add-form');
 const adminMiceList = document.getElementById('admin-mice-list');
 const adminResetBtn = document.getElementById('admin-reset-btn');
 const adminLockBtn = document.getElementById('admin-lock-btn');
+const adminSubmissionsList = document.getElementById('admin-submissions-list');
 
 // Secret triggers and Auth Modal references
 const logoTrigger = document.getElementById('logo-trigger');
@@ -522,6 +523,13 @@ hostForm.addEventListener('submit', (e) => {
         showToast('🚀 Collaborate submission sent! Check your Gmail inbox.');
         hostForm.reset();
         if (hostMsgCounter) hostMsgCounter.textContent = '0 / 300';
+        
+        // Also log to local database
+        fetch(`${API_BASE}/api/submissions`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, mouseName, brand, message })
+        }).catch(err => console.error("Failed to log submission to database", err));
     })
     .catch(error => {
         console.error(error);
@@ -541,6 +549,7 @@ function checkAdminAuth() {
     if (isLoggedIn) {
         navAdminLink.style.display = 'list-item';
         hostAdminSection.style.display = 'block';
+        fetchSubmissions();
     } else {
         navAdminLink.style.display = 'none';
         hostAdminSection.style.display = 'none';
@@ -1125,6 +1134,82 @@ function initScrollReveal() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
+
+// ── Collaborate Inbox (Submissions) Functions ──────────────────
+let submissionsData = [];
+
+async function fetchSubmissions() {
+    if (!adminSubmissionsList) return;
+    try {
+        const response = await fetch(`${API_BASE}/api/submissions`, {
+            method: 'GET',
+            headers: getAuthHeaders()
+        });
+        if (response.status === 401 || response.status === 403) {
+            return;
+        }
+        if (!response.ok) throw new Error("Failed to fetch submissions");
+        submissionsData = await response.json();
+        renderSubmissions();
+    } catch (e) {
+        console.error("Error loading submissions", e);
+    }
+}
+
+function renderSubmissions() {
+    if (!adminSubmissionsList) return;
+    if (submissionsData.length === 0) {
+        adminSubmissionsList.innerHTML = `
+            <div style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 0.85rem;">
+                No collaborate messages in database yet.
+            </div>
+        `;
+        return;
+    }
+    
+    adminSubmissionsList.innerHTML = submissionsData.map(sub => {
+        const dateStr = new Date(sub.timestamp).toLocaleString();
+        return `
+            <div class="admin-submission-item">
+                <div class="admin-submission-header">
+                    <span class="admin-submission-sender">👤 ${sub.name} (<a href="mailto:${sub.email}" style="color:var(--accent-light); text-decoration:underline;">${sub.email}</a>)</span>
+                    <span class="admin-submission-meta">${dateStr}</span>
+                </div>
+                <div class="admin-submission-body" style="padding-bottom: 24px;">
+                    <span class="admin-submission-mouse">🖱️ Brand: ${sub.brand} | Model: ${sub.mouseName}</span>
+                    <p class="admin-submission-message" style="margin-top:6px;">${sub.message}</p>
+                </div>
+                <button class="btn-delete-mouse" onclick="deleteSubmission(${sub.id})" title="Delete message" style="position: absolute; right: 16px; bottom: 16px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6"/></svg>
+                </button>
+            </div>
+        `;
+    }).join('');
+}
+
+window.deleteSubmission = function(id) {
+    if (confirm("Are you sure you want to delete this collaborate message?")) {
+        fetch(`${API_BASE}/api/submissions/${id}`, {
+            method: 'DELETE',
+            headers: getAuthHeaders()
+        })
+        .then(res => {
+            if (res.status === 401 || res.status === 403) {
+                handleSessionExpired();
+                throw new Error("Unauthorized");
+            }
+            if (!res.ok) throw new Error("API delete failed");
+            return res.json();
+        })
+        .then(() => {
+            showToast(`🗑️ Message removed from database.`);
+            fetchSubmissions();
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    }
+};
 
 // ── Init ────────────────────────────────────────────────────
 async function initApp() {

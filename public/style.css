@@ -2302,3 +2302,65 @@ input, textarea, select { font-family: inherit; }
     z-index: 2;
 }
 
+/* --- Collaborate Inbox Cards --- */
+.admin-submissions-list::-webkit-scrollbar { width: 4px; }
+.admin-submissions-list::-webkit-scrollbar-track { background: transparent; }
+.admin-submissions-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.admin-submission-item {
+    padding: 16px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    transition: var(--transition);
+}
+
+.admin-submission-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+}
+
+.admin-submission-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 6px;
+    gap: 12px;
+}
+
+.admin-submission-sender {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.admin-submission-meta {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.admin-submission-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-submission-mouse {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent-light);
+}
+
+.admin-submission-message {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+

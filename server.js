@@ -49,6 +49,31 @@ function writeMiceDb(data) {
     }
 }
 
+const submissionsPath = path.join(__dirname, 'submissions.json');
+
+function readSubmissionsDb() {
+    try {
+        if (!fs.existsSync(submissionsPath)) {
+            return [];
+        }
+        const data = fs.readFileSync(submissionsPath, 'utf8');
+        return JSON.parse(data);
+    } catch (e) {
+        console.error("Error reading submissions database file", e);
+        return [];
+    }
+}
+
+function writeSubmissionsDb(data) {
+    try {
+        fs.writeFileSync(submissionsPath, JSON.stringify(data, null, 2), 'utf8');
+        return true;
+    } catch (e) {
+        console.error("Error writing submissions database file", e);
+        return false;
+    }
+}
+
 // In-Memory Security Logs & Config Storage (persisted for live simulator context)
 let securityConfig = {
     wafChallengeEnabled: true,
@@ -189,6 +214,70 @@ app.post('/api/mice/reset', authorizeHost, (req, res) => {
         res.status(500).json({ success: false, message: 'Failed to reset database.' });
     }
 });
+
+// ── SUBMISSIONS (COLLABORATE MESSAGES) API ROUTES ─────────────────
+
+// Post a collaborate message (Public)
+app.post('/api/submissions', (req, res) => {
+    const submissions = readSubmissionsDb();
+    const { name, email, mouseName, brand, message } = req.body;
+    
+    if (!name || !email || !mouseName || !brand || !message) {
+        return res.status(400).json({ success: false, message: 'All fields are required.' });
+    }
+    
+    // Server-side input length sanitization / check (Anti-Spam)
+    if (message.length > 300) {
+        return res.status(400).json({ success: false, message: 'Message exceeds 300 character limit.' });
+    }
+    
+    const newId = submissions.length > 0 ? Math.max(...submissions.map(s => s.id)) + 1 : 1;
+    const newSubmission = {
+        id: newId,
+        name,
+        email,
+        mouseName,
+        brand,
+        message,
+        timestamp: new Date().toISOString()
+    };
+    
+    submissions.push(newSubmission);
+    if (writeSubmissionsDb(submissions)) {
+        addServerLog(`[SYSTEM] New collaborate inquiry received from: ${name} (${email})`, 'allow');
+        res.json({ success: true, submission: newSubmission });
+    } else {
+        res.status(500).json({ success: false, message: 'Failed to save submission.' });
+    }
+});
+
+// Get all collaborate messages (Protected)
+app.get('/api/submissions', authorizeHost, (req, res) => {
+    const submissions = readSubmissionsDb();
+    res.json(submissions);
+});
+
+// Delete a collaborate message (Protected)
+app.delete('/api/submissions/:id', authorizeHost, (req, res) => {
+    const submissions = readSubmissionsDb();
+    const targetId = parseInt(req.params.id);
+    const index = submissions.findIndex(s => s.id === targetId);
+    
+    if (index === -1) {
+        return res.status(404).json({ success: false, message: 'Message not found.' });
+    }
+    
+    const senderInfo = `${submissions[index].name} (${submissions[index].email})`;
+    submissions.splice(index, 1);
+    
+    if (writeSubmissionsDb(submissions)) {
+        addServerLog(`[SYSTEM] Host removed collaborate message from: ${senderInfo}`, 'allow');
+        res.json({ success: true, message: 'Message deleted successfully.' });
+    } else {
+        res.status(500).json({ success: false, message: 'Failed to update database file.' });
+    }
+});
+
 
 // ── SECURITY SHIELD CONFIG & LOGS API ───────────────────────────
 
