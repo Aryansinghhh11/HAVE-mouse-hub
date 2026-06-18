@@ -531,7 +531,7 @@
                     <a href="#faq">FAQ</a>
                     <a href="#">Grip Guide</a>
                     <a href="#">Sensor Database</a>
-                    <a href="#">Contact Us</a>
+                    <a href="mailto:rajputaryan.0221@gmail.com">Contact Us</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -566,9 +566,12 @@
             <div class="modal-body" style="text-align: center; padding: 40px 32px 32px;">
                 <div class="auth-icon" style="font-size: 3.5rem; margin-bottom: 16px;">🔒</div>
                 <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Host Access</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">Enter the master password to unlock the host dashboard.</p>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px;">Enter the host credentials to unlock the dashboard.</p>
                 <form id="secret-auth-form" class="auth-form">
-                    <div class="form-group" style="margin-bottom: 16px;">
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <input type="email" id="secret-auth-email" placeholder="Host Email" style="width: 100%; padding: 14px 18px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.95rem; text-align: center;" required autocomplete="email">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
                         <input type="password" id="secret-auth-password" placeholder="Password" style="width: 100%; padding: 14px 18px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.95rem; text-align: center;" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Verify & Unlock</button>

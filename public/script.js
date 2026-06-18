@@ -66,6 +66,7 @@ const authModal = document.getElementById('auth-modal');
 const authModalClose = document.getElementById('auth-modal-close');
 const secretAuthForm = document.getElementById('secret-auth-form');
 const secretAuthPassword = document.getElementById('secret-auth-password');
+const secretAuthEmail = document.getElementById('secret-auth-email');
 
 // ── Utility: Stars ──────────────────────────────────────────
 function renderStars(rating) {
@@ -490,8 +491,42 @@ const observer = new IntersectionObserver((entries) => {
 // ── Collaborate Form Handlers ───────────────────────────────
 hostForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    showToast('🚀 Collaborate submission received! We\'ll review details.');
-    hostForm.reset();
+    
+    const name = document.getElementById('host-name').value;
+    const email = document.getElementById('host-email').value;
+    const mouseName = document.getElementById('host-mouse').value;
+    const brand = document.getElementById('host-brand').value;
+    const message = document.getElementById('host-message').value;
+    
+    showToast("<span class='rotate-spin'>🖱️</span> Sending submission...");
+    
+    fetch('https://formsubmit.co/ajax/rajputaryan.0221@gmail.com', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            mouseName: mouseName,
+            brand: brand,
+            message: message
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Failed to send");
+        return response.json();
+    })
+    .then(data => {
+        showToast('🚀 Collaborate submission sent! Check your Gmail inbox.');
+        hostForm.reset();
+        if (hostMsgCounter) hostMsgCounter.textContent = '0 / 300';
+    })
+    .catch(error => {
+        console.error(error);
+        showToast('❌ Failed to send submission. Please try again.');
+    });
 });
 
 newsletterForm.addEventListener('submit', (e) => {
@@ -515,13 +550,14 @@ function checkAdminAuth() {
 function openAuthModal() {
     authModal.style.display = 'flex';
     setTimeout(() => {
-        secretAuthPassword.focus();
+        if (secretAuthEmail) secretAuthEmail.focus();
     }, 50);
 }
 
 function closeAuthModal() {
     authModal.style.display = 'none';
-    secretAuthPassword.value = '';
+    if (secretAuthEmail) secretAuthEmail.value = '';
+    if (secretAuthPassword) secretAuthPassword.value = '';
 }
 
 authModalClose.addEventListener('click', closeAuthModal);
@@ -543,15 +579,16 @@ document.addEventListener('keydown', (e) => {
 
 secretAuthForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const email = secretAuthEmail.value.trim();
     const password = secretAuthPassword.value;
     
     fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password })
+        body: JSON.stringify({ email, password })
     })
     .then(res => {
-        if (res.status === 401) throw new Error("INCORRECT_PASSWORD");
+        if (res.status === 401 || res.status === 403) throw new Error("INCORRECT_CREDENTIALS");
         if (!res.ok) throw new Error("SERVER_ERROR");
         return res.json();
     })
@@ -572,8 +609,8 @@ secretAuthForm.addEventListener('submit', (e) => {
     })
     .catch(err => {
         console.error(err);
-        if (err.message === "INCORRECT_PASSWORD") {
-            showToast('❌ Incorrect password. Access denied.');
+        if (err.message === "INCORRECT_CREDENTIALS") {
+            showToast('❌ Incorrect credentials. Access denied.');
         } else {
             showToast('❌ Connection error: Backend server offline or inaccessible.');
         }

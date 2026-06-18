@@ -75,21 +75,22 @@ function addServerLog(message, type = 'system') {
 
 // Login endpoint
 app.post('/api/auth/login', (req, res) => {
-    const { password } = req.body;
+    const { email, password } = req.body;
     
-    if (!password) {
-        return res.status(400).json({ success: false, message: 'Password is required' });
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Email and password are required' });
     }
     
-    const isValid = bcrypt.compareSync(password, ADMIN_PASSWORD_HASH);
+    const isEmailValid = (email.toLowerCase().trim() === 'rajputaryan.0221@gmail.com');
+    const isPasswordValid = bcrypt.compareSync(password, ADMIN_PASSWORD_HASH);
     
-    if (isValid) {
+    if (isEmailValid && isPasswordValid) {
         const token = jwt.sign({ username: 'admin' }, JWT_SECRET, { expiresIn: '2h' });
-        addServerLog("[ALLOWED] Successful Host Admin authentication check.", "allow");
+        addServerLog("[ALLOWED] Successful Host Admin credentials authentication.", "allow");
         return res.json({ success: true, token });
     } else {
-        addServerLog("[BLOCKED] Unauthorized dashboard password login attempt.", "block");
-        return res.status(401).json({ success: false, message: 'Invalid password' });
+        addServerLog("[BLOCKED] Unauthorized dashboard credentials login attempt.", "block");
+        return res.status(401).json({ success: false, message: 'Invalid email or password' });
     }
 });
 
