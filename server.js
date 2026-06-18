@@ -79,8 +79,7 @@ let securityConfig = {
     wafChallengeEnabled: true,
     antiScrapingEnabled: true,
     blockedCount: Math.floor(Math.random() * 200) + 450,
-    apiQueriesCount: Math.floor(Math.random() * 2000) + 18500,
-    apiKey: 'hav_sk_live_58c973ea2f9b8c'
+    apiQueriesCount: Math.floor(Math.random() * 2000) + 18500
 };
 
 let securityLogs = [
@@ -288,7 +287,7 @@ app.get('/api/security/status', (req, res) => {
 
 // Update configurations (Protected)
 app.post('/api/security/config', authorizeHost, (req, res) => {
-    const { wafChallengeEnabled, antiScrapingEnabled, apiKey, blockedCount } = req.body;
+    const { wafChallengeEnabled, antiScrapingEnabled, blockedCount } = req.body;
     
     if (wafChallengeEnabled !== undefined) {
         securityConfig.wafChallengeEnabled = !!wafChallengeEnabled;
@@ -297,10 +296,6 @@ app.post('/api/security/config', authorizeHost, (req, res) => {
     if (antiScrapingEnabled !== undefined) {
         securityConfig.antiScrapingEnabled = !!antiScrapingEnabled;
         addServerLog(`[SYSTEM] Config update: Anti-Scraping protection set to ${securityConfig.antiScrapingEnabled}`);
-    }
-    if (apiKey !== undefined) {
-        securityConfig.apiKey = apiKey;
-        addServerLog("[SYSTEM] Rotated API Cryptographic Access Secret Key.");
     }
     if (blockedCount !== undefined) {
         securityConfig.blockedCount = blockedCount;

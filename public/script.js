@@ -640,9 +640,6 @@ const wafChallengeScreen = document.getElementById('waf-challenge-screen');
 const clientIpPlaceholder = document.getElementById('client-ip-placeholder');
 const toggleWafChallenge = document.getElementById('toggle-waf-challenge');
 const toggleAntiScraping = document.getElementById('toggle-anti-scraping');
-const apiKeyInput = document.getElementById('api-key-input');
-const btnGenerateApi = document.getElementById('btn-generate-api');
-const btnToggleKeyVisibility = document.getElementById('btn-toggle-key-visibility');
 const securityLogs = document.getElementById('security-logs');
 const statBlocked = document.getElementById('sec-stat-blocked');
 const statApi = document.getElementById('sec-stat-api');
@@ -667,7 +664,6 @@ async function fetchSecurityStatus() {
         apiQueriesCount = data.apiQueriesCount;
         if (toggleWafChallenge) toggleWafChallenge.checked = data.wafChallengeEnabled;
         if (toggleAntiScraping) toggleAntiScraping.checked = data.antiScrapingEnabled;
-        if (apiKeyInput) apiKeyInput.value = data.apiKey;
         updateSecurityUI();
     } catch (e) {
         console.error("Failed to load security status", e);
@@ -803,36 +799,7 @@ if (toggleAntiScraping) {
     });
 }
 
-if (btnGenerateApi) {
-    btnGenerateApi.addEventListener('click', () => {
-        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        let secret = '';
-        for (let i = 0; i < 14; i++) {
-            secret += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        const newKey = `hav_sk_live_${secret}`;
-        updateSecurityConfig({ apiKey: newKey });
-        showToast("🔑 Generated new API Secret Key!");
-    });
-}
 
-if (btnToggleKeyVisibility && apiKeyInput) {
-    btnToggleKeyVisibility.addEventListener('click', () => {
-        const type = apiKeyInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        apiKeyInput.setAttribute('type', type);
-        
-        const eyeIcon = document.getElementById('eye-icon');
-        if (eyeIcon) {
-            if (type === 'password') {
-                // Eye icon (hidden state)
-                eyeIcon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
-            } else {
-                // Crossed eye icon (visible state)
-                eyeIcon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`;
-            }
-        }
-    });
-}
 
 // Dynamic Character Limit Counters (Anti-Spam)
 const hostMessageInput = document.getElementById('host-message');
