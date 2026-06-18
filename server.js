@@ -15,8 +15,8 @@ const ADMIN_PASSWORD_HASH = bcrypt.hashSync('bsdkmcbc1', 10);
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend files from workspace directory
-app.use(express.static(__dirname));
+// Serve static frontend files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve brain artifacts (images) directly from artifacts directory
 const brainDir = path.resolve(__dirname, '../../brain/67b2acf6-ca86-4ca1-8657-f69801a60386');
@@ -237,7 +237,7 @@ app.post('/api/security/logs', (req, res) => {
 
 // Fallback HTML page server routing (Single Page App helper)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start Server listener
