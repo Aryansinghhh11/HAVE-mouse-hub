@@ -179,11 +179,11 @@ input, textarea, select { font-family: inherit; }
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
 }
 
 .hero-glow {
@@ -196,7 +196,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-1 {
     width: 600px;
     height: 600px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.25);
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
@@ -205,7 +205,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-2 {
     width: 400px;
     height: 400px;
-    background: rgba(240, 240, 240, 0.08);
+    background: rgba(255, 255, 255, 0.18);
     bottom: 10%;
     right: 10%;
 }
@@ -2254,27 +2254,27 @@ input, textarea, select { font-family: inherit; }
 @keyframes ambientDrift {
     0% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     }
     33% {
         background:
-            radial-gradient(700px at 80% 40%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 20% 70%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 70% 30%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 80% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
+            radial-gradient(500px at 20% 70%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+            radial-gradient(400px at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     }
     66% {
         background:
-            radial-gradient(700px at 40% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 70% 30%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 20% 60%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 40% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
+            radial-gradient(500px at 70% 30%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+            radial-gradient(400px at 20% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     }
     100% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
     }
 }
 
