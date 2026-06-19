@@ -4,35 +4,35 @@
 
 /* --- CSS Variables / Design Tokens --- */
 :root {
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-card: #16161f;
-    --bg-card-hover: #1c1c28;
-    --bg-surface: #1e1e2a;
-    --bg-glass: rgba(22, 22, 31, 0.7);
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-card: #121212;
+    --bg-card-hover: #1c1c1c;
+    --bg-surface: #222222;
+    --bg-glass: rgba(10, 10, 10, 0.75);
 
-    --text-primary: #f0f0f5;
-    --text-secondary: #a0a0b8;
-    --text-muted: #6b6b80;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-muted: #525252;
 
-    --accent: #7c5cfc;
-    --accent-light: #9b82ff;
-    --accent-dark: #5a3cd4;
-    --accent-glow: rgba(124, 92, 252, 0.3);
+    --accent: #ffffff;
+    --accent-light: #f5f5f5;
+    --accent-dark: #404040;
+    --accent-glow: rgba(255, 255, 255, 0.15);
 
-    --green: #34d399;
-    --green-bg: rgba(52, 211, 153, 0.1);
-    --red: #f87171;
-    --red-bg: rgba(248, 113, 113, 0.1);
-    --yellow: #fbbf24;
-    --blue: #60a5fa;
+    --green: #ffffff;
+    --green-bg: rgba(255, 255, 255, 0.08);
+    --red: #525252;
+    --red-bg: rgba(255, 255, 255, 0.03);
+    --yellow: #a3a3a3;
+    --blue: #ffffff;
 
-    --gradient-primary: linear-gradient(135deg, #7c5cfc 0%, #c084fc 50%, #f472b6 100%);
-    --gradient-card: linear-gradient(145deg, rgba(124, 92, 252, 0.05) 0%, rgba(192, 132, 252, 0.02) 100%);
-    --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(124, 92, 252, 0.15) 0%, transparent 60%);
+    --gradient-primary: linear-gradient(135deg, #ffffff 0%, #a3a3a3 50%, #404040 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
 
-    --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(124, 92, 252, 0.3);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.35);
 
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -40,10 +40,10 @@
     --radius-xl: 28px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.4);
-    --shadow-glow: 0 0 40px rgba(124, 92, 252, 0.15);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.08);
 
     --font: 'Outfit', system-ui, -apple-system, sans-serif;
 
@@ -97,7 +97,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 15, 0.85);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -142,7 +142,7 @@ input, textarea, select { font-family: inherit; }
 
 .nav-link:hover, .nav-link.active {
     color: var(--text-primary);
-    background: rgba(124, 92, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link.active { color: var(--accent-light); }
@@ -179,8 +179,8 @@ input, textarea, select { font-family: inherit; }
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(124, 92, 252, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124, 92, 252, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
@@ -196,7 +196,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-1 {
     width: 600px;
     height: 600px;
-    background: rgba(124, 92, 252, 0.12);
+    background: rgba(255, 255, 255, 0.12);
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
@@ -205,7 +205,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-2 {
     width: 400px;
     height: 400px;
-    background: rgba(244, 114, 182, 0.08);
+    background: rgba(240, 240, 240, 0.08);
     bottom: 10%;
     right: 10%;
 }
@@ -290,12 +290,12 @@ input, textarea, select { font-family: inherit; }
 .btn-primary {
     background: var(--gradient-primary);
     color: #fff;
-    box-shadow: 0 4px 20px rgba(124, 92, 252, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(124, 92, 252, 0.45);
+    box-shadow: 0 6px 30px rgba(255, 255, 255, 0.45);
 }
 
 .btn-secondary {
@@ -402,7 +402,7 @@ input, textarea, select { font-family: inherit; }
 .section-tag {
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(124, 92, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--accent-light);
     border-radius: var(--radius-full);
     font-size: 0.8rem;
@@ -510,13 +510,13 @@ input, textarea, select { font-family: inherit; }
     max-height: 90px;
     object-fit: contain;
     mix-blend-mode: screen;
-    filter: drop-shadow(0 8px 16px rgba(124, 92, 252, 0.2));
+    filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.2));
     transition: var(--transition);
 }
 
 .mouse-card:hover .mouse-card-img {
     transform: scale(1.1) translateY(-4px);
-    filter: drop-shadow(0 12px 24px rgba(124, 92, 252, 0.45));
+    filter: drop-shadow(0 12px 24px rgba(255, 255, 255, 0.45));
 }
 
 .mouse-card-emoji {
@@ -540,21 +540,21 @@ input, textarea, select { font-family: inherit; }
 }
 
 .badge-gaming {
-    background: rgba(124, 92, 252, 0.15);
+    background: rgba(255, 255, 255, 0.15);
     color: var(--accent-light);
-    border: 1px solid rgba(124, 92, 252, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .badge-productivity {
-    background: rgba(52, 211, 153, 0.12);
+    background: rgba(255, 255, 255, 0.12);
     color: var(--green);
-    border: 1px solid rgba(52, 211, 153, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .badge-lightweight {
-    background: rgba(251, 191, 36, 0.12);
+    background: rgba(160, 160, 160, 0.12);
     color: var(--yellow);
-    border: 1px solid rgba(251, 191, 36, 0.3);
+    border: 1px solid rgba(160, 160, 160, 0.3);
 }
 
 .card-body {
@@ -646,9 +646,9 @@ input, textarea, select { font-family: inherit; }
     border-radius: var(--radius-full);
     font-size: 0.82rem;
     font-weight: 600;
-    background: rgba(124, 92, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--accent-light);
-    border: 1px solid rgba(124, 92, 252, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transition: var(--transition);
 }
 
@@ -708,7 +708,7 @@ input, textarea, select { font-family: inherit; }
 .compare-select:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 .compare-vs {
@@ -734,7 +734,7 @@ input, textarea, select { font-family: inherit; }
 .compare-row:last-child { border-bottom: none; }
 
 .compare-row.header {
-    background: rgba(124, 92, 252, 0.06);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .compare-cell {
@@ -815,7 +815,7 @@ input, textarea, select { font-family: inherit; }
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 .form-group input::placeholder,
@@ -1064,7 +1064,7 @@ input, textarea, select { font-family: inherit; }
 
 .footer-socials a:hover {
     border-color: var(--accent);
-    background: rgba(124, 92, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* --- Modal --- */
@@ -1221,12 +1221,12 @@ input, textarea, select { font-family: inherit; }
 
 .pros-card {
     background: var(--green-bg);
-    border: 1px solid rgba(52, 211, 153, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .cons-card {
     background: var(--red-bg);
-    border: 1px solid rgba(248, 113, 113, 0.2);
+    border: 1px solid rgba(80, 80, 80, 0.2);
 }
 
 .pros-card h4, .cons-card h4 {
@@ -1273,8 +1273,8 @@ input, textarea, select { font-family: inherit; }
 
 .modal-verdict {
     padding: 20px;
-    background: rgba(124, 92, 252, 0.06);
-    border: 1px solid rgba(124, 92, 252, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-md);
 }
 
@@ -1333,7 +1333,7 @@ input, textarea, select { font-family: inherit; }
         left: 0;
         right: 0;
         flex-direction: column;
-        background: rgba(10, 10, 15, 0.95);
+        background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         padding: 16px;
@@ -1386,8 +1386,8 @@ input, textarea, select { font-family: inherit; }
 .hero-video-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(10, 10, 15, 0.1) 0%, rgba(10, 10, 15, 0.8) 100%),
-                linear-gradient(to bottom, rgba(10, 10, 15, 0.1) 0%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, var(--bg-primary) 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -1410,7 +1410,7 @@ input, textarea, select { font-family: inherit; }
     max-height: 80px;
     object-fit: contain;
     mix-blend-mode: screen;
-    filter: drop-shadow(0 8px 16px rgba(124, 92, 252, 0.25));
+    filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.25));
 }
 
 /* --- Host Admin Section --- */
@@ -1463,7 +1463,7 @@ input, textarea, select { font-family: inherit; }
 .admin-select:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 .manage-header {
@@ -1485,8 +1485,8 @@ input, textarea, select { font-family: inherit; }
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--red);
-    background: rgba(248, 113, 113, 0.1);
-    border: 1px solid rgba(248, 113, 113, 0.2);
+    background: rgba(80, 80, 80, 0.1);
+    border: 1px solid rgba(80, 80, 80, 0.2);
     padding: 6px 14px;
     border-radius: var(--radius-full);
     transition: var(--transition);
@@ -1496,7 +1496,7 @@ input, textarea, select { font-family: inherit; }
 .btn-reset-db:hover {
     background: var(--red);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(248, 113, 113, 0.2);
+    box-shadow: 0 4px 12px rgba(80, 80, 80, 0.2);
 }
 
 .admin-mice-list {
@@ -1554,7 +1554,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .btn-delete-mouse {
-    background: rgba(248, 113, 113, 0.08);
+    background: rgba(80, 80, 80, 0.08);
     color: var(--red);
     width: 32px;
     height: 32px;
@@ -1563,7 +1563,7 @@ input, textarea, select { font-family: inherit; }
     align-items: center;
     justify-content: center;
     transition: var(--transition);
-    border: 1px solid rgba(248, 113, 113, 0.15);
+    border: 1px solid rgba(80, 80, 80, 0.15);
     cursor: pointer;
 }
 
@@ -1640,7 +1640,7 @@ input, textarea, select { font-family: inherit; }
 .auth-form input[type="password"]:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 /* --- Bot WAF Verification Challenge Screen --- */
@@ -1774,7 +1774,7 @@ input, textarea, select { font-family: inherit; }
     font-weight: 700;
     color: var(--green);
     background: var(--green-bg);
-    border: 1px solid rgba(52, 211, 153, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 4px 10px;
     border-radius: var(--radius-full);
     letter-spacing: 0.05em;
@@ -1958,7 +1958,7 @@ input, textarea, select { font-family: inherit; }
     height: 60px;
     border-radius: 50%;
     background: var(--gradient-primary);
-    box-shadow: 0 8px 32px rgba(124, 92, 252, 0.4);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1972,7 +1972,7 @@ input, textarea, select { font-family: inherit; }
 
 .chat-toggle-btn:hover {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 12px 40px rgba(124, 92, 252, 0.6);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.6);
 }
 
 .chat-badge-dot {
@@ -2017,7 +2017,7 @@ input, textarea, select { font-family: inherit; }
 
 .chat-header {
     padding: 16px 20px;
-    background: rgba(124, 92, 252, 0.08);
+    background: rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -2097,7 +2097,7 @@ input, textarea, select { font-family: inherit; }
     color: #fff;
     border-top-right-radius: 4px;
     align-self: flex-end;
-    box-shadow: 0 4px 12px rgba(124, 92, 252, 0.15);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 .chat-suggestions {
@@ -2120,7 +2120,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .suggestion-tag:hover {
-    background: rgba(124, 92, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-color: var(--border-hover);
     color: var(--text-primary);
 }
@@ -2254,27 +2254,27 @@ input, textarea, select { font-family: inherit; }
 @keyframes ambientDrift {
     0% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(124, 92, 252, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(244, 114, 182, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     33% {
         background:
-            radial-gradient(700px at 80% 40%, rgba(124, 92, 252, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 20% 70%, rgba(244, 114, 182, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 70% 30%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 80% 40%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 20% 70%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 70% 30%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     66% {
         background:
-            radial-gradient(700px at 40% 70%, rgba(124, 92, 252, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 70% 30%, rgba(244, 114, 182, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 20% 60%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 40% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 70% 30%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 20% 60%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     100% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(124, 92, 252, 0.07) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(244, 114, 182, 0.05) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(192, 132, 252, 0.04) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
 }
 
@@ -2298,7 +2298,7 @@ input, textarea, select { font-family: inherit; }
     pointer-events: none;
     transition: opacity 0.3s ease;
     opacity: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(124, 92, 252, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
     z-index: 2;
 }
 
