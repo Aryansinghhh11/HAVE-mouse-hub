@@ -110,7 +110,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 95%;
     margin: 0 auto;
     padding: 0 24px;
     display: flex;
