@@ -121,8 +121,18 @@ input, textarea, select { font-family: inherit; }
     font-weight: 700;
 }
 
-.logo-icon { font-size: 1.6rem; }
-.logo-text .accent { color: var(--accent); }
+.logo-img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
 
 .nav-links {
     display: flex;
