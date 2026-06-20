@@ -133,7 +133,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .logo-img {
-    height: 44px;
+    height: 64px;
     width: auto;
     object-fit: contain;
     border-radius: var(--radius-sm);
