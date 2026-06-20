@@ -69,8 +69,13 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+body.loaded {
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -119,6 +124,12 @@ input, textarea, select { font-family: inherit; }
     gap: 10px;
     font-size: 1.4rem;
     font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.85s ease;
+}
+
+.nav-logo.show {
+    opacity: 1;
 }
 
 .logo-img {
@@ -2372,5 +2383,51 @@ input, textarea, select { font-family: inherit; }
     line-height: 1.5;
     word-break: break-word;
 }
+
+/* ────── WINGS LOADER STYLES ────── */
+#lc { position:fixed; inset:0; z-index:100; }
+#lvg {
+  position:fixed; inset:0; z-index:102; pointer-events:none;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.92) 100%);
+}
+
+#fly {
+  position: fixed; z-index:300; pointer-events:none;
+  font-family: 'Palatino Linotype','Book Antiqua',Georgia,serif;
+  font-weight:900; letter-spacing:0.2em; color:#fff; white-space:nowrap;
+  opacity:0;
+  text-shadow: 0 0 60px rgba(255,255,255,0.12);
+  will-change: transform, font-size, left, top;
+}
+
+#tl {
+  position:fixed; z-index:300; pointer-events:none;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family:'Courier New',monospace;
+  font-size:clamp(10px,1.2vw,13px);
+  letter-spacing:0.6em; text-transform:uppercase;
+  color:rgba(255,255,255,0.25);
+  opacity:0; transition: opacity 2s ease 1s;
+}
+
+#pw {
+  position:fixed; bottom:55px; left:50%; transform:translateX(-50%);
+  z-index:301; display:flex; flex-direction:column; align-items:center; gap:10px;
+  transition: opacity 0.5s ease;
+}
+#pw.hide { opacity:0; pointer-events:none; }
+#pb { width:180px; height:1px; background:rgba(255,255,255,0.08); overflow:hidden; }
+#pf { height:100%; width:0%; background:linear-gradient(90deg,transparent,#fff,transparent); box-shadow:0 0 8px #fff; }
+#pl { font-family:'Courier New',monospace; font-size:9px; letter-spacing:0.45em; color:rgba(255,255,255,0.2); }
+
+#site {
+  position:fixed; inset:0; overflow-y:auto;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.9s ease;
+  background:#000;
+}
+#site.vis { opacity:1; pointer-events:all; }
 
 

@@ -11,8 +11,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Ambient Animated Background -->
-    <div class="ambient-gradient"></div>
+    <!-- LOADER ELEMENTS -->
+    <canvas id="lc"></canvas>
+    <div id="lvg"></div>
+    <div id="fly">HAVE</div>
+    <div id="tl">Est. in Darkness</div>
+    <div id="pw">
+        <div id="pb"><div id="pf"></div></div>
+        <div id="pl">LOADING &mdash; <span id="pct">0</span>%</div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT WRAPPER -->
+    <div id="site">
+        <!-- Ambient Animated Background -->
+        <div class="ambient-gradient"></div>
 
     <!-- Bot Challenge Screen (WAF Human Verification Simulator) -->
     <div id="waf-challenge-screen" class="waf-challenge-overlay">
@@ -632,6 +644,8 @@
                 </button>
             </form>
         </div>
+    </div>
+
     </div>
 
     <script src="script.js"></script>
