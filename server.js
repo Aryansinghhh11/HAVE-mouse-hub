@@ -325,6 +325,17 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// ── Auto-seed database on first start ────────────────────────
+if (!fs.existsSync(dbPath)) {
+    const seedData = readDefaultMiceSeed();
+    writeMiceDb(seedData);
+    console.log(`[SEED] Seeded database with ${seedData.length} default mice entries.`);
+}
+if (!fs.existsSync(submissionsPath)) {
+    writeSubmissionsDb([]);
+    console.log('[SEED] Initialized empty submissions database.');
+}
+
 // Start Server listener
 app.listen(PORT, () => {
     console.log(`HAVE Secure Database running at http://localhost:${PORT}`);

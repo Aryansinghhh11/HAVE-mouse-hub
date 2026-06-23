@@ -200,8 +200,8 @@ input, textarea, select { font-family: inherit; }
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 85%);
@@ -217,7 +217,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-1 {
     width: 600px;
     height: 600px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
@@ -226,7 +226,7 @@ input, textarea, select { font-family: inherit; }
 .hero-glow-2 {
     width: 400px;
     height: 400px;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(240, 240, 240, 0.08);
     bottom: 10%;
     right: 10%;
 }
@@ -309,8 +309,9 @@ input, textarea, select { font-family: inherit; }
 }
 
 .btn-primary {
+
     background: var(--gradient-primary);
-    color: #fff;
+    color: #000000;
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
 }
 
@@ -479,8 +480,9 @@ input, textarea, select { font-family: inherit; }
 }
 
 .filter-btn.active {
+
     background: var(--accent);
-    color: #fff;
+    color: #000000;
     border-color: var(--accent);
 }
 
@@ -674,8 +676,9 @@ input, textarea, select { font-family: inherit; }
 }
 
 .btn-details:hover {
+
     background: var(--accent);
-    color: #fff;
+    color: #000000;
     border-color: var(--accent);
 }
 
@@ -1975,6 +1978,7 @@ input, textarea, select { font-family: inherit; }
 }
 
 .chat-toggle-btn {
+
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -1983,7 +1987,7 @@ input, textarea, select { font-family: inherit; }
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: #000000;
     font-size: 1.6rem;
     transition: var(--transition);
     border: none;
@@ -2115,7 +2119,7 @@ input, textarea, select { font-family: inherit; }
 
 .user-msg {
     background: var(--gradient-primary);
-    color: #fff;
+    color: #000000;
     border-top-right-radius: 4px;
     align-self: flex-end;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
@@ -2196,11 +2200,12 @@ input, textarea, select { font-family: inherit; }
 }
 
 .chat-send-btn {
+
     width: 38px;
     height: 38px;
     border-radius: 50%;
     background: var(--accent);
-    color: #fff;
+    color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2275,27 +2280,27 @@ input, textarea, select { font-family: inherit; }
 @keyframes ambientDrift {
     0% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     33% {
         background:
-            radial-gradient(700px at 80% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
-            radial-gradient(500px at 20% 70%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
-            radial-gradient(400px at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            radial-gradient(700px at 80% 40%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 20% 70%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 70% 30%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     66% {
         background:
-            radial-gradient(700px at 40% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
-            radial-gradient(500px at 70% 30%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
-            radial-gradient(400px at 20% 60%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            radial-gradient(700px at 40% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 70% 30%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 20% 60%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
     100% {
         background:
-            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 70%),
-            radial-gradient(500px at 85% 20%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
-            radial-gradient(400px at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            radial-gradient(700px at 15% 25%, rgba(255, 255, 255, 0.07) 0%, transparent 70%),
+            radial-gradient(500px at 85% 20%, rgba(240, 240, 240, 0.05) 0%, transparent 60%),
+            radial-gradient(400px at 50% 80%, rgba(160, 160, 160, 0.04) 0%, transparent 60%);
     }
 }
 
@@ -2349,7 +2354,7 @@ input, textarea, select { font-family: inherit; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding-bottom: 6px;
     gap: 12px;
 }
