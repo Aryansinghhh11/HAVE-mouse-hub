@@ -463,6 +463,15 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 // ── Hero Stats Counter ──────────────────────────────────────
 function animateCounters() {
+    // Dynamically update the 'Mice Reviewed' target to match the actual database size
+    document.querySelectorAll('.stat').forEach(stat => {
+        const label = stat.querySelector('.stat-label');
+        if (label && label.textContent.trim() === 'Mice Reviewed') {
+            const numEl = stat.querySelector('.stat-number');
+            if (numEl) numEl.dataset.target = miceData.length;
+        }
+    });
+
     document.querySelectorAll('.stat-number[data-target]').forEach(el => {
         const target = parseInt(el.dataset.target);
         const duration = 2000;
